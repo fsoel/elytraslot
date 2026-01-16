@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.dermememann.elytra.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "AvatarRendererMixin",
+    "AvatarRenderStateMixin",
+    "HumanoidArmorLayerMixin",
+    "LivingEntityRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

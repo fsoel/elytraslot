@@ -1,0 +1,8 @@
+{
+  "icon": "elytra:gui/slot/chestplate",
+  "quick_move_predicates": [
+    "trinkets:all",
+    "trinkets:chest/chestplate"
+  ],
+  "drop_rule": "drop"
+}

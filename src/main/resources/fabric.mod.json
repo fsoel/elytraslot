@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "elytra",
+	"version": "${version}",
+	"name": "ElytraSlot",
+	"description": "Allows you to wear an elytra while also wearing a chestplate.",
+	"authors": [
+		"DerMemeMann"
+	],
+	"contact": {
+		"sources": "https://github.com/fsoel/elytraslot"
+	},
+	"license": "MPL-2.0",
+	"icon": "assets/elytra/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.dermememann.elytra.Elytra"
+		],
+		"client": [
+			"com.dermememann.elytra.ElytraClient"
+		]
+	},
+	"mixins": [
+		"elytra.mixins.json",
+		{
+			"config": "elytra.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*",
+		"trinkets": ">=3.11.0"
+	}
+}
