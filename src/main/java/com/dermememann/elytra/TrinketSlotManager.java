@@ -123,4 +123,22 @@ public class TrinketSlotManager {
             return true;
         });
     }
+
+    public static ItemStack getTrinketChestSlotItemStack(LivingEntity entity) {
+        var trinketComponent = TrinketsApi.getTrinketComponent(entity);
+        if (trinketComponent.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+
+        return trinketComponent.map(comp -> {
+                    var groupMap = comp.getInventory().get(TRINKET_GROUP);
+                    if (groupMap == null) return ItemStack.EMPTY;
+
+                    var inv = groupMap.get(TRINKET_SLOT);
+                    if (inv == null) return ItemStack.EMPTY;
+
+                    return inv.getItem(0);
+                })
+                .orElse(ItemStack.EMPTY);
+    }
 }
