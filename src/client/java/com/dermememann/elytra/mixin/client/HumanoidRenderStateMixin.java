@@ -13,12 +13,12 @@ public class HumanoidRenderStateMixin implements TrinketChestState {
     private ItemStack trinketChestEquipment = ItemStack.EMPTY;
 
     @Override
-    public ItemStack getTrinketChestEquipment() {
+    public ItemStack elytra$getTrinketChestEquipment() {
         return trinketChestEquipment;
     }
 
     @Override
-    public void setTrinketChestEquipment(ItemStack stack) {
+    public void elytra$setTrinketChestEquipment(ItemStack stack) {
         trinketChestEquipment = (stack == null) ? ItemStack.EMPTY : stack;
     }
 }

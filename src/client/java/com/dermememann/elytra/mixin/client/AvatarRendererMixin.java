@@ -26,7 +26,7 @@ public class AvatarRendererMixin<AvatarlikeEntity extends Avatar & ClientAvatarE
     @Inject(method = "extractRenderState(Lnet/minecraft/world/entity/Avatar;Lnet/minecraft/client/renderer/entity/state/AvatarRenderState;F)V", at = @At("TAIL"))
     private void extractRenderState(AvatarlikeEntity avatar, AvatarRenderState avatarRenderState, float f, CallbackInfo ci) {
         ItemStack trinketChestEquipment = getTrinketChestStack(avatar);
-        ((TrinketChestState) avatarRenderState).setTrinketChestEquipment(trinketChestEquipment);
+        ((TrinketChestState) avatarRenderState).elytra$setTrinketChestEquipment(trinketChestEquipment);
     }
 
     @Unique

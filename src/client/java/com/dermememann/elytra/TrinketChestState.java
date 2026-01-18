@@ -3,6 +3,6 @@ package com.dermememann.elytra;
 import net.minecraft.world.item.ItemStack;
 
 public interface TrinketChestState {
-    ItemStack getTrinketChestEquipment();
-    void setTrinketChestEquipment(ItemStack stack);
+    ItemStack elytra$getTrinketChestEquipment();
+    void elytra$setTrinketChestEquipment(ItemStack stack);
 }

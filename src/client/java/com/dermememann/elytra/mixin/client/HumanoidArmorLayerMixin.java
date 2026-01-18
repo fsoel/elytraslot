@@ -22,7 +22,7 @@ public abstract class HumanoidArmorLayerMixin<S extends HumanoidRenderState> {
 
     @Inject(method = "submit(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/client/renderer/entity/state/HumanoidRenderState;FF)V", at = @At("TAIL"))
     private void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, S humanoidRenderState, float f, float g, CallbackInfo ci) {
-        ItemStack chestTrinket = ((TrinketChestState) humanoidRenderState).getTrinketChestEquipment();
+        ItemStack chestTrinket = ((TrinketChestState) humanoidRenderState).elytra$getTrinketChestEquipment();
         if (chestTrinket == null || chestTrinket.isEmpty()) {
             return;
         }
