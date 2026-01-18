@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
@@ -46,4 +47,13 @@ public class EnchantmentHelperMixin {
             }
         }
     }
+
+    @Inject(method = "runIterationOnEquipment", at = @At("TAIL"))
+    private static void runIterationOnEquipment(LivingEntity entity, EnchantmentHelper.EnchantmentInSlotVisitor visitor, CallbackInfo ci) {
+        ItemStack itemStack = getTrinketChestSlotItemStack(entity);
+        if (itemStack.isEmpty()) return;
+
+        EnchantmentHelper.runIterationOnItem(itemStack, EquipmentSlot.CHEST, entity, visitor);
+    }
+
 }
