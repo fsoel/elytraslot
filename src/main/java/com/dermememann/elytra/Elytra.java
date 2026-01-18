@@ -11,6 +11,8 @@ public class Elytra implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		TrinketChestplate.register();
+
 		LOGGER.info("Initialized Elytra mod (server)");
 	}
 }

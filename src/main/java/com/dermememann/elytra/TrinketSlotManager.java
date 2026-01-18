@@ -46,6 +46,7 @@ public class TrinketSlotManager {
                     ItemStack stack = inv.getItem(0);
                     if (stack.isEmpty()) {
                         inv.setItem(0, stackToInsert);
+                        // TrinketChestArmorAttributes.sync(entity, stackToInsert);
                         return true;
                     }
                     return false;
@@ -72,6 +73,7 @@ public class TrinketSlotManager {
                     ItemStack oneItem = handStack.split(1);
                     ItemStack previousItem = inv.getItem(0);
                     inv.setItem(0, oneItem);
+                    // TrinketChestArmorAttributes.sync(player, oneItem);
 
                     if (previousItem != null && !previousItem.isEmpty()) {
                         ItemStack inHandNow = player.getItemInHand(hand);
