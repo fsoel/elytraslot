@@ -1,10 +1,14 @@
 package com.dermememann.elytra;
 
 import dev.emi.trinkets.api.TrinketsApi;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.Equippable;
 
 public class TrinketSlotManager {
 
@@ -88,5 +92,35 @@ public class TrinketSlotManager {
                     return true;
                 })
                 .orElse(false);
+    }
+
+    public static void tryHurtAndBreakTrinketChestSlot(LivingEntity entity, DamageSource source, int finalDamage) {
+        var trinketComponent = TrinketsApi.getTrinketComponent(entity);
+        if (trinketComponent.isEmpty()) {
+            return;
+        }
+
+        trinketComponent.map(comp -> {
+            var groupMap = comp.getInventory().get(TRINKET_GROUP);
+            if (groupMap == null) return false;
+
+            var inv = groupMap.get(TRINKET_SLOT);
+            if (inv == null) return false;
+
+            ItemStack stack = inv.getItem(0);
+            if (stack.isEmpty()) return false;
+
+            Equippable equippable = stack.get(DataComponents.EQUIPPABLE);
+            if (equippable == null) return false;
+
+            if (!equippable.damageOnHurt()) return false;
+            if (!stack.isDamageableItem()) return false;
+            if (!stack.canBeHurtBy(source)) return false;
+
+            stack.hurtAndBreak(finalDamage, entity, EquipmentSlot.CHEST);
+
+            inv.setItem(0, stack.isEmpty() ? ItemStack.EMPTY : stack);
+            return true;
+        });
     }
 }

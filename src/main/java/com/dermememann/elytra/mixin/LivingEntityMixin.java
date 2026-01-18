@@ -2,6 +2,7 @@ package com.dermememann.elytra.mixin;
 
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -11,7 +12,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import static com.dermememann.elytra.TrinketSlotManager.tryHurtAndBreakTrinketChestSlot;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
@@ -61,5 +65,25 @@ public class LivingEntityMixin {
                 .orElse(false);
 
         cir.setReturnValue(hasRoom);
+    }
+
+    @Inject(method = "doHurtEquipment", at = @At("TAIL"))
+    private void doHurtEquipment(DamageSource damageSource, float damageAmount, EquipmentSlot[] slots, CallbackInfo ci) {
+        if (damageAmount <= 0.0F) return;
+
+        boolean includesChest = false;
+        for (EquipmentSlot slot : slots) {
+            if (slot == EquipmentSlot.CHEST) {
+                includesChest = true;
+                break;
+            }
+        }
+        if (!includesChest) return;
+
+        LivingEntity self = (LivingEntity) (Object) this;
+
+        int finalDamage = (int) Math.max(1.0F, damageAmount / 4.0F);
+
+        tryHurtAndBreakTrinketChestSlot(self, damageSource, finalDamage);
     }
 }

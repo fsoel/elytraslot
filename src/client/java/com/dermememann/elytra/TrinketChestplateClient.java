@@ -25,7 +25,7 @@ public final class TrinketChestplateClient {
 
             ItemStack now = getTrinketChestStack(player);
 
-            if (ItemStack.matches(last, now)) return;
+            if (ItemStack.isSameItem(now, last)) return;
 
             if (initial) {
                 initial = false;
