@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "EquipmentDispenseItemBehaviorMixin",
+    "ItemStackMixin",
     "LivingEntityMixin"
   ],
   "injectors": {
