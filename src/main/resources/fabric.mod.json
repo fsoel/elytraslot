@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "elytra",
 	"version": "${version}",
-	"name": "ElytraSlot",
+	"name": "AlwaysElytra",
 	"description": "Allows you to wear an elytra while also wearing a chestplate.",
 	"authors": [
 		"DerMemeMann"
