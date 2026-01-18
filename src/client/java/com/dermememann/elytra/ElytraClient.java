@@ -6,5 +6,7 @@ public class ElytraClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		ChestplateEquip.register();
+
+		Elytra.LOGGER.info("Initialized Elytra mod (client)");
 	}
 }

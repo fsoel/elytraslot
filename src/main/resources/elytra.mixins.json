@@ -3,7 +3,8 @@
   "package": "com.dermememann.elytra.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ExampleMixin"
+    "EquipmentDispenseItemBehaviorMixin",
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

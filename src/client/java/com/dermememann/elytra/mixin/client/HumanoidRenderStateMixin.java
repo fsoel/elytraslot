@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(HumanoidRenderState.class)
-public class AvatarRenderStateMixin implements TrinketChestState {
+public class HumanoidRenderStateMixin implements TrinketChestState {
 
     @Unique
     private ItemStack trinketChestEquipment = ItemStack.EMPTY;
