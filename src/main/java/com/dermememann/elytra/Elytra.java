@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Elytra implements ModInitializer {
-	public static final String MOD_ID = "elytra";
+	public static final String MOD_ID = "alwayselytra";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override

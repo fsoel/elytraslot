@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "elytra",
+	"id": "alwayselytra",
 	"version": "${version}",
 	"name": "AlwaysElytra",
 	"description": "Allows you to wear an elytra while also wearing a chestplate.",
@@ -8,7 +8,7 @@
 		"DerMemeMann"
 	],
 	"contact": {
-		"sources": "https://github.com/fsoel/elytraslot"
+		"sources": "https://github.com/fsoel/alwayselytra"
 	},
 	"license": "MPL-2.0",
 	"icon": "assets/elytra/icon.png",
@@ -19,6 +19,9 @@
 		],
 		"client": [
 			"com.dermememann.elytra.ElytraClient"
+		],
+		"modmenu": [
+			"com.dermememann.elytra.ModMenuApiImpl"
 		]
 	},
 	"mixins": [
